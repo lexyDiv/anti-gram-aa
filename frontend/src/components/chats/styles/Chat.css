@@ -1,0 +1,107 @@
+#content-box {
+  position: absolute;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  border-radius: 20px;
+  background-color: rgb(28, 36, 36);
+  width: 90%;
+  top: 70px;
+  overflow: hidden;
+  overflow-y: scroll;
+}
+
+#content-box::-webkit-scrollbar {
+  width: 10px;
+  /* ширина всей полосы прокрутки */
+}
+
+#content-box::-webkit-scrollbar-track {
+  background-color: rgb(59, 83, 83); /* цвет зоны отслеживания */
+  border-radius: 5px;
+  border-style: solid;
+  border-width: 1px;
+}
+
+#content-box::-webkit-scrollbar-thumb {
+  background-color: rgba(224, 217, 231, 0.3); /* цвет бегунка */
+  border-radius: 20px; /* округлось бегунка */
+  border: 1px solid rgb(243, 241, 239); /* отступ вокруг бегунка */
+}
+
+.chat-item {
+  color: white;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  cursor: pointer;
+  background-color: rgb(34, 43, 43);
+  border-color: rgb(34, 43, 43);
+  border-style: solid;
+  border-radius: 40px;
+  height: 80px;
+  width: 95%;
+  margin: 6.5px;
+}
+
+.chat-item:hover {
+  border-style: solid;
+  border-color: rgb(74, 95, 88);
+}
+
+.chat-foto {
+  width: 60px;
+  height: 60px;
+  border-radius: 30px;
+  margin: 10px;
+  margin-top: 18px;
+}
+
+.chat-content {
+  line-height: 10px;
+  margin-top: 12px;
+}
+
+.offline {
+  position: absolute;
+  width: 6px;
+  height: 6px;
+  border-radius: 3px;
+  background-color: grey;
+  box-shadow: 0px 0px 2px 2px grey;
+  margin-left: 65px;
+  margin-top: 60px;
+}
+
+.online {
+  position: absolute;
+  width: 6px;
+  height: 6px;
+  border-radius: 3px;
+  background-color: rgb(55, 55, 250);
+  box-shadow: 0px 0px 4px 4px rgb(3, 3, 245);
+  margin-left: 65px;
+  margin-top: 60px;
+}
+
+.offline-focus {
+  position: absolute;
+  width: 6px;
+  height: 6px;
+  border-radius: 3px;
+  background-color: grey;
+  box-shadow: 0px 0px 2px 2px grey;
+  margin-left: -30px;
+  margin-top: 25px;
+}
+
+.online-focus {
+  position: absolute;
+  width: 6px;
+  height: 6px;
+  border-radius: 3px;
+  background-color: rgb(55, 55, 250);
+  box-shadow: 0px 0px 4px 4px rgb(3, 3, 245);
+  margin-left: -30px;
+  margin-top: 25px;
+}

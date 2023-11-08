@@ -1,0 +1,12 @@
+#fone {
+  position: absolute;
+  width: 100%;
+  height: 100vh;
+  overflow: hidden;
+  color: rgb(206, 198, 157);
+}
+
+.litera {
+  position: absolute;
+  font-size: 10rem;
+}

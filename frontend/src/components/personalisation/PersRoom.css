@@ -1,0 +1,175 @@
+#pers-room {
+  position: absolute;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  height: 100%;
+  background-image: url("http://domedia.lk/wp-content/uploads/2018/11/13162448904561-t1200x480.jpg");
+  justify-content: center;
+  align-items: center;
+}
+
+#pers-room-body {
+  display: flex;
+  flex-direction: column;
+  background-color: rgb(34, 43, 43);
+  border-radius: 30px;
+  transition-property: width, height;
+  transition-duration: 0.8s, 0.8s;
+  padding: 20px;
+  align-items: center;
+}
+
+#pers-room-info {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  color: white;
+  align-items: center;
+}
+
+#prg {
+  color: rgb(194, 182, 164);
+  font-size: 30px;
+  font-weight: 900;
+}
+
+#base-text {
+  display: flex;
+  width: 90%;
+  text-align: center;
+  margin-top: 20px;
+  font-style: italic;
+  font-size: 18px;
+}
+
+#base-select {
+  display: flex;
+  width: 100%;
+  height: 100%;
+  align-items: center;
+  justify-content: center;
+}
+
+#base-select > p {
+  color: white;
+  font-weight: 600;
+  margin: 15px;
+  cursor: pointer;
+}
+
+#base-select > p:hover {
+  color: rgb(223, 197, 197);
+}
+
+#pers-room-back {
+  color: white;
+  cursor: pointer;
+}
+
+#pers-room-back:hover {
+  color: rgb(199, 155, 155);
+}
+
+#pers-form {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+  width: 95%;
+}
+
+#pers-form > button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: max-content;
+  padding: 5px;
+  height: min-content;
+  border: none;
+  background-color: rgb(35, 46, 45);
+  border-radius: 15px;
+  color: white;
+}
+
+#pers-form > button:hover {
+  color: rgb(206, 191, 191);
+  border-style: solid;
+  border-color: rgb(42, 56, 55);
+}
+
+#pers-form-message {
+  display: flex;
+  width: 100%;
+  height: 100px;
+
+  text-align: center;
+  align-items: center;
+  justify-content: center;
+  color: red;
+}
+
+.pers-form-line {
+  display: flex;
+  align-items: center;
+  width: 100%;
+  height: 10%;
+  border-radius: 15px;
+  background-color: rgb(48, 59, 59);
+}
+
+.pers-form-line-input {
+  outline: none;
+  height: 100%;
+  width: 100%;
+  border: none;
+  background-color: rgba(20, 224, 224, 0);
+  border-radius: 15px;
+  padding-left: 15px;
+  padding-right: 15px;
+  transition-property: border-color, box-shadow;
+  transition-duration: 0.5s, 0.5s;
+  color: white;
+}
+
+.pers-form-line-input:focus {
+  border-style: solid;
+  border-color: rgb(4, 4, 247, 0.5);
+  box-shadow: 0px 0px 4px 4px rgb(3, 3, 245, 0.5);
+}
+
+.pers-form-eye {
+  width: 30px;
+  height: 30px;
+  margin: 15px;
+  cursor: pointer;
+  transition-property: transform;
+  transition-duration: 0.5s;
+  border-radius: 15px;
+  border-style: solid;
+}
+
+#pers-nik-status {
+  display: flex;
+
+  width: 60px;
+  height: 100%;
+  align-items: center;
+  justify-content: center;
+}
+
+#pers-stop {
+  width: 25px;
+  height: 25px;
+}
+
+.pers-form-eye:hover {
+  transform: scale(1.3);
+}
+
+@media (min-width: 760px) {
+  .pers-form-line {
+    width: 50%;
+  }
+}

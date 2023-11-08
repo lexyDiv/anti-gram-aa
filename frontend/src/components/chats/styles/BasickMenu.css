@@ -1,0 +1,516 @@
+#basick-menu {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  z-index: 12;
+  background-color: rgba(0, 17, 255, 0.1);
+}
+
+#basick-menu-body {
+  position: absolute;
+  background-color: rgba(38, 41, 41);
+  width: 310px;
+
+  top: 60px;
+  border-top-right-radius: 20px;
+  border-bottom-right-radius: 20px;
+  transition-property: left;
+  transition-duration: 0.5s;
+  padding: 20px;
+}
+
+#basick-box {
+  display: flex;
+  flex-direction: column;
+  background-color: rgba(38, 41, 41);
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  border-top-left-radius: 20px;
+  border-bottom-left-radius: 20px;
+}
+
+#basick-box::-webkit-scrollbar {
+  width: 10px;
+  /* ширина всей полосы прокрутки */
+}
+
+#basick-box::-webkit-scrollbar-track {
+  background-color: rgb(59, 83, 83); /* цвет зоны отслеживания */
+  border-radius: 5px;
+  border-style: solid;
+  border-width: 1px;
+}
+
+#basick-box::-webkit-scrollbar-thumb {
+  background-color: rgba(224, 217, 231, 0.3); /* цвет бегунка */
+  border-radius: 20px; /* округлось бегунка */
+  border: 1px solid rgb(243, 241, 239); /* отступ вокруг бегунка */
+}
+
+.basick-menu-item {
+  color: white;
+  margin-left: 30px;
+  font-weight: 600;
+  font-size: large;
+  cursor: pointer;
+  margin: 20px;
+}
+
+.basick-menu-item:hover {
+  color: rgb(219, 191, 191);
+}
+
+.basick-closed {
+  display: flex;
+  position: absolute;
+  background-color: rgba(38, 41, 41);
+  color: white;
+  width: 30px;
+  height: 30px;
+  border-radius: 15px;
+  font-weight: 800;
+  left: 280px;
+  top: 30px;
+  cursor: pointer;
+}
+
+.basick-closed:hover {
+  background-color: white;
+  color: black;
+}
+
+.basick-closed > p {
+  margin-left: 10px;
+}
+
+#basick-box-point {
+  display: flex;
+  flex-direction: column;
+  background-color: rgba(38, 41, 41);
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  overflow-y: scroll;
+  border-top-left-radius: 20px;
+  border-bottom-left-radius: 20px;
+}
+
+#basick-box-point::-webkit-scrollbar {
+  width: 10px;
+  /* ширина всей полосы прокрутки */
+}
+
+#basick-box-point::-webkit-scrollbar-track {
+  background-color: rgb(59, 83, 83); /* цвет зоны отслеживания */
+  border-radius: 5px;
+  border-style: solid;
+  border-width: 1px;
+}
+
+#basick-box-point::-webkit-scrollbar-thumb {
+  background-color: rgba(224, 217, 231, 0.3); /* цвет бегунка */
+  border-radius: 20px; /* округлось бегунка */
+  border: 1px solid rgb(243, 241, 239); /* отступ вокруг бегунка */
+}
+
+#point-password-form {
+  margin-top: 55px;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  height: 100%;
+  align-items: center;
+  justify-content: center;
+}
+
+#point-password-form > div > p {
+  margin-top: 25px;
+  color: white;
+}
+
+#point-password-form > div {
+  display: flex;
+}
+
+#point-password-form > div > img {
+  width: 30px;
+  height: 30px;
+  cursor: pointer;
+  margin-top: 20px;
+  margin-left: 20px;
+  border-radius: 15px;
+  border-style: solid;
+  border-color: rgba(38, 41, 41);
+}
+
+#point-password-form > div > img:hover {
+  background-color: rgb(58, 73, 73);
+}
+
+#point-password-form > input {
+  margin-top: -17px;
+  padding: 10px;
+  border-radius: 10px;
+  width: 90%;
+  outline: none;
+
+  border-color: rgb(48, 59, 59);
+  border-style: solid;
+  background-color: rgb(48, 59, 59);
+  transition-property: border-color, box-shadow;
+  transition-duration: 0.5s, 0.5s;
+  color: white;
+}
+
+#point-password-form > input:focus {
+  border-style: solid;
+  border-color: rgb(4, 4, 247, 0.5);
+  box-shadow: 0px 0px 4px 4px rgb(3, 3, 245, 0.5);
+}
+
+#point-password-form > button {
+  margin-top: 30px;
+  background: none;
+  border: none;
+  padding: 0;
+  font-weight: 600;
+  font-size: large;
+  color: white;
+}
+
+#point-password-form > button:hover {
+  color: rgb(219, 181, 181);
+}
+
+/* #point-password-form > input:focus {
+  border-style: solid;
+  border-color: rgb(4, 4, 247, 0.5);
+  box-shadow: 0px 0px 4px 4px rgb(3, 3, 245, 0.5);
+} */
+
+#pass-point-form-info {
+  display: flex;
+  justify-content: center;
+  text-align: center;
+  height: 45px;
+  width: 100%;
+  margin-top: 20px;
+  font-weight: 600;
+}
+
+#point-avatar {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  background-color: rgba(38, 41, 41);
+  height: 360px;
+}
+
+.input-file {
+  position: relative;
+  display: inline-block;
+}
+.input-file span {
+  position: relative;
+  display: inline-block;
+  cursor: pointer;
+  outline: none;
+  text-decoration: none;
+  font-size: 14px;
+  vertical-align: middle;
+  color: white;
+  text-align: center;
+  border-radius: 4px;
+  /* background-color: #419152; */
+  line-height: 22px;
+  height: 40px;
+  padding: 10px 20px;
+  box-sizing: border-box;
+  border: none;
+  margin: 0;
+  font-weight: 600;
+  font-size: large;
+  margin: 30px;
+  /* transition: background-color 0.2s; */
+}
+.input-file input[type="file"] {
+  position: absolute;
+  z-index: -1;
+  opacity: 0;
+  display: block;
+  width: 0;
+  height: 0;
+}
+
+/* Focus */
+/* .input-file input[type=file]:focus + span {
+	box-shadow: 0 0 0 0.2rem rgba(0,123,255,.25);
+}
+  */
+/* Hover/active */
+.input-file span:hover {
+  color: rgb(209, 169, 169);
+}
+/* .input-file:active span {
+	background-color: #2E703A;
+} */
+
+/* Disabled */
+/* .input-file input[type=file]:disabled + span {
+	background-color: #eee;
+} */
+
+#btn-avatar-in {
+  color: white;
+  border: none;
+  padding: 0;
+
+  background: none;
+  font-size: large;
+  font-weight: 600;
+  border-radius: 10px;
+}
+
+#btn-avatar-in:hover {
+  color: rgb(189, 167, 167);
+}
+
+#get-users {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  height: 100%;
+}
+
+#get-box {
+  display: flex;
+  margin: -8px;
+  margin-bottom: 10px;
+}
+
+#get-box > input {
+  outline: none;
+  padding: 10px;
+  border-radius: 10px;
+  width: 80%;
+  margin-left: 10px;
+  border: none;
+  background-color: rgb(48, 59, 59);
+  transition-property: border-color, box-shadow;
+  transition-duration: 0.5s, 0.5s;
+  color: white;
+}
+
+#get-box > input:focus {
+  border-style: solid;
+  border-color: rgb(4, 4, 247, 0.5);
+  box-shadow: 0px 0px 4px 4px rgb(3, 3, 245, 0.5);
+}
+
+#get-box > img {
+  width: 30px;
+  height: 30px;
+  cursor: pointer;
+  margin-left: 10px;
+  margin-top: 8px;
+  transition-property: transform;
+  transition-duration: 0.5s;
+}
+
+#get-box > img:hover {
+  transform: scale(1.3);
+}
+
+#users-box {
+  width: 100%;
+  height: 100%;
+
+  overflow: hidden;
+  overflow-y: scroll;
+}
+
+#users-box::-webkit-scrollbar {
+  width: 10px;
+  /* ширина всей полосы прокрутки */
+}
+
+#users-box::-webkit-scrollbar-track {
+  background-color: rgb(59, 83, 83); /* цвет зоны отслеживания */
+  border-radius: 5px;
+  border-style: solid;
+  border-width: 1px;
+}
+
+#users-box::-webkit-scrollbar-thumb {
+  background-color: rgba(224, 217, 231, 0.3); /* цвет бегунка */
+  border-radius: 20px; /* округлось бегунка */
+  border: 1px solid rgb(243, 241, 239); /* отступ вокруг бегунка */
+}
+
+#users-err {
+  display: flex;
+  width: 100%;
+  height: 100%;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+}
+
+#users-err > p {
+  color: red;
+  font-weight: 600;
+}
+
+#menu-loaging {
+  display: flex;
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background-color: rgb(3, 3, 243, 0.05);
+  align-items: center;
+  justify-content: center;
+  margin-left: -20px;
+  margin-top: -20px;
+}
+
+/*  */
+
+.select-chat {
+  display: flex;
+  width: 98%;
+  height: 80px;
+  border-style: solid;
+  border-radius: 20px;
+  align-items: center;
+  cursor: pointer;
+  overflow: hidden;
+}
+
+.select-chat:hover {
+  background-color: rgb(44, 48, 48);
+}
+
+#select-chat-foto {
+  width: 60px;
+  height: 60px;
+  border-radius: 30px;
+  margin: 5px;
+}
+
+#select-chat-body {
+  display: flex;
+  flex-direction: column;
+  color: white;
+  justify-content: space-between;
+  width: 100%;
+  height: 100%;
+}
+
+.new-chat {
+  display: flex;
+  flex-direction: column;
+}
+
+.new-chat-line {
+  display: flex;
+  align-items: center;
+  width: 98%;
+  min-height: 51px;
+  margin: 5px;
+  line-height: 18px;
+  text-align: center;
+  justify-content: center;
+}
+
+.new-chat-line > button {
+  background: none;
+  border: none;
+  padding: 0;
+  font-weight: 600;
+  font-size: large;
+  color: white;
+}
+
+.new-chat-line > button:hover {
+  color: rgb(219, 181, 181);
+}
+
+.new-chat-line > input {
+  outline: none;
+  padding: 10px;
+  border-radius: 10px;
+  width: 80%;
+  height: 80%;
+  border: none;
+  background-color: rgb(48, 59, 59);
+  transition-property: border-color, box-shadow;
+  transition-duration: 0.5s, 0.5s;
+  color: white;
+}
+
+.new-chat-line > input:focus {
+  border-style: solid;
+  border-color: rgb(4, 4, 247, 0.5);
+  box-shadow: 0px 0px 4px 4px rgb(3, 3, 245, 0.5);
+}
+
+.new-chat-image-box {
+  display: flex;
+  width: 50px;
+  height: 100%;
+
+  align-items: center;
+  justify-content: center;
+}
+
+#status-pass-box {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  height: 100%;
+  background-color: rgb(0, 0, 0, 0.7);
+  position: absolute;
+  margin-left: -20px;
+  margin-top: -20px;
+  align-items: center;
+  justify-content: center;
+  border-radius: 20px;
+}
+
+#status-pass-box > input {
+  outline: none;
+  padding: 10px;
+  border-radius: 10px;
+  width: 80%;
+  height: 40px;
+  border: none;
+  background-color: rgb(48, 59, 59);
+  transition-property: border-color, box-shadow;
+  transition-duration: 0.5s, 0.5s;
+  color: white;
+  margin: 5px;
+}
+
+#status-pass-box > input:focus {
+  border-style: solid;
+  border-color: rgb(4, 4, 247, 0.5);
+  box-shadow: 0px 0px 4px 4px rgb(3, 3, 245, 0.5);
+}
+
+#status-pass-box > button {
+  background: none;
+  border: none;
+  padding: 0;
+  font-weight: 600;
+  font-size: large;
+  color: white;
+  margin: 5px;
+}
+
+#status-pass-box > button:hover {
+  color: rgb(219, 181, 181);
+}
