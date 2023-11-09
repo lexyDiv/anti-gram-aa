@@ -145,7 +145,10 @@ const chatsSlice = createSlice({
       }
     },
     addNewChat: (state, action) => {
-      state.chats.push(action.payload.chat);
+      const old = state.chats.find(
+        (chat) => chat.id === action.payload.chat.id
+      );
+      !old && state.chats.push(action.payload.chat);
     },
     putMessage: (state, action) => {
       const chat = state.chats.find(
@@ -289,8 +292,13 @@ const chatsSlice = createSlice({
         (chat) => chat.id === action.payload.chat_id
       );
       if (chat) {
-        chat.messages.push(action.payload);
-        chat.allMessages += 1;
+        const old = chat.messages.find(
+          (message) => message.id === action.payload.id
+        );
+        if (!old) {
+          chat.messages.push(action.payload);
+          chat.allMessages += 1;
+        }
       }
     },
   },

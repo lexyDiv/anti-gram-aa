@@ -15,7 +15,7 @@ function LiteraItem({
         top: `${litera.top}%`,
         fontSize: `${width / 10}px`,
         color: `${litera.color}`,
-        transition: `left 3s ease 0.8s, top 4s ease 0.8s, color 4s`,
+        transition: `left 1s ease 0.3s, top 1.3s ease 0.3s, color 1.3s`,
       }}
       className="litera"
     >

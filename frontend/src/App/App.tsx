@@ -7,12 +7,16 @@ import ChatRoom from "../components/chats/ChatRoom";
 import { RootState, useAppDispatch } from "../store";
 import { useSelector } from "react-redux";
 import { io } from "socket.io-client";
-import { statePrevDefault, updateOnline } from "../components/chats/slices/chatsSlice";
+import {
+  statePrevDefault,
+  updateOnline,
+} from "../components/chats/slices/chatsSlice";
 import { chatRegistration } from "../functions/chatsRegistration";
 import { updateNewChat } from "../components/chats/slices/listingSlice";
 import { socketOperations } from "../functions/socketOperartions";
 import { getChatsSocket } from "../functions/getChatsSocket";
 import { userSocketJoin } from "../functions/userSocketJoin";
+import { sleepingListener } from "../components/chats/specialFunctions/sleepingListener";
 
 export const socket = io();
 let reLoad = false;
@@ -29,9 +33,7 @@ function App(): JSX.Element {
   const dispatch = useAppDispatch();
   const { user } = useSelector((state: RootState) => state.user);
   const { chats } = useSelector((state: RootState) => state.chats);
-  const { focusMessage } = useSelector(
-    (state: RootState) => state.listing
-  );
+  const { focusMessage } = useSelector((state: RootState) => state.listing);
   const actualFocusMessage = useRef(focusMessage);
   actualFocusMessage.current = focusMessage;
   const actualChats = useRef(chats);
@@ -39,6 +41,8 @@ function App(): JSX.Element {
   const actualState = useRef(useSelector((state: RootState) => state.chats));
   actualState.current = useSelector((state: RootState) => state.chats);
   const { newChat } = useSelector((state: RootState) => state.listing);
+  const actualUser = useRef(user);
+  actualUser.current = user;
 
   useEffect(() => {
     navigate("/");
@@ -84,14 +88,17 @@ function App(): JSX.Element {
       userSocketJoin({ socket, user });
       reLoad = true;
     }
+    actualUser.current && sleepingListener({ user: actualUser, socket });
   }, [user]);
-
 
   return (
     <Routes>
       <Route path="/" element={<Logo />} />
       <Route path="/personalisation" element={<PersRoom />} />
-      <Route path="/chats" element={<ChatRoom screen={screen} socket={socket}/>} />
+      <Route
+        path="/chats"
+        element={<ChatRoom screen={screen} socket={socket} />}
+      />
     </Routes>
   );
 }

@@ -27,7 +27,7 @@ function Logo(): JSX.Element {
       setTimeout(() => {
         dispatch(changeLoad(false));
         getValidUser({ dispatch, navigate });
-      }, 6000);
+      }, 2200);
       return () => clearInterval(interval);
     } else {
       navigate('/chats');
