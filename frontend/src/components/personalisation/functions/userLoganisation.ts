@@ -33,13 +33,17 @@ export function userLoganisation({
       formData.append("password", password);
       axiosInstance.put("/pers", formData).then((response) => {
         dispatch(changeLoad(true));
-        if (response.status === 200) {
-          if (response.data.message === "ok") {
-            localStorage.setItem("token", response.data.refrashToken);
-            dispatch(registration(response.data.user));
-            navigate("/chats");
+        if (response) {
+          if (response.status === 200) {
+            if (response.data.message === "ok") {
+              localStorage.setItem("token", response.data.refrashToken);
+              dispatch(registration(response.data.user));
+              navigate("/chats");
+            } else {
+              setMessage(messageReg(response.data.message));
+            }
           } else {
-            setMessage(messageReg(response.data.message));
+            setMessage("Проблемы на сервере, попробуйте позже!");
           }
         } else {
           setMessage("Проблемы на сервере, попробуйте позже!");

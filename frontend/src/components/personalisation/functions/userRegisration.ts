@@ -49,14 +49,18 @@ export function userRegisration({
       formData.append("nickName", nick);
       axiosInstance.post("/pers", formData).then((response) => {
         dispatch(changeLoad(true));
-        if (response.status === 200) {
-          const { data } = response;
-          if (data.message === "ok") {
-            localStorage.setItem("token", data.accessToken);
-            dispatch(registration(data.user));
-            navigate("/chats");
+        if (response) {
+          if (response.status === 200) {
+            const { data } = response;
+            if (data.message === "ok") {
+              localStorage.setItem("token", data.accessToken);
+              dispatch(registration(data.user));
+              navigate("/chats");
+            } else {
+              setMessage(data.message);
+            }
           } else {
-            setMessage(data.message);
+            setMessage("Проблемы на сервере, попробуйте позже!");
           }
         } else {
           setMessage("Проблемы на сервере, попробуйте позже!");
