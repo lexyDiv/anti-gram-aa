@@ -12,8 +12,8 @@
 # production
 /build
 
-# dotenv envirenment variable files
-.env
+
+
 
 
 # misc
