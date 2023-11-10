@@ -24,8 +24,10 @@ router.route("/:chatId").get(async (req, res) => {
 router.route('/sleeping/:nickName', (req, res) => {
   const { nickName } = req.params;
   if (!usersData.usersOnline[nickName]) {
+    console.log(111111111);
     res.json({ message: 'bad' });
   } else {
+    console.log(22222222);
     res.json({ message: 'ok' });
   }
 });
