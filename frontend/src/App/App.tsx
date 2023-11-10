@@ -85,7 +85,7 @@ function App(): JSX.Element {
       });
 
       getChatsSocket({ socket, user, dispatch });
-      userSocketJoin({ socket, user });
+     // userSocketJoin({ socket, user });
       reLoad = true;
     }
     actualUser.current && sleepingListener({ user: actualUser, socket });

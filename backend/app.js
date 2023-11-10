@@ -84,79 +84,6 @@ io.on("connection", (socket) => {
     }
   });
 
-  socket.on("check:sleeping", async (data) => {
-    const { userNick, userId, contacts } = data;
-    if (!usersData.usersOnline[userNick]) {
-      socket.join(userNick);
-      usersData.usersOnline[userNick] = {
-        userId,
-        contacts,
-        socketsId: [socket.id],
-      };
-
-      try {
-        const user = await User.findOne({
-          where: { id: userId },
-          attributes: ["id", "nickName"],
-        });
-        const midiChats = await Midi_chat.findAll({
-          where: { user_id: userId },
-          include: {
-            model: Chat,
-          },
-        });
-        const chatsData = [];
-
-        for (let i = 0; i < midiChats.length; i += 1) {
-          const chat = midiChats[i].Chat;
-          socket.join(String(chat.id));
-          const hz = await chatFormation(chat, userId);
-
-          let alien;
-          let online = false;
-
-          if (chat.type === "personal") {
-            const alienName = chat.users
-              .split("+")
-              .find((nickName) => nickName !== user.nickName);
-
-            alien = await User.findOne({
-              where: { nickName: alienName },
-              attributes: ["id", "nickName", "foto"],
-            });
-            if (alien && usersData.usersOnline[alien.nickName]) {
-              online = true;
-            }
-          }
-
-          chatsData.push({
-            id: chat.id,
-            status: chat.status,
-            creator_id: chat.creator_id,
-            foto: chat.foto,
-            users: chat.users,
-            name: chat.name,
-            messages: hz.messageValid,
-            forvard: 1,
-            type: chat.type,
-            oldMessages: [],
-            allMessages: hz.num,
-            scrollTop: -1,
-            click: false,
-            alien,
-            scrollFocusMessageId: 0,
-            stepsPlan: [],
-            online,
-          });
-        }
-        io.to(user.nickName).emit('get:chats', { message: 'ok', chatsData });
-      } catch (err) {
-        io.to(userNick).emit('get:chats', { message: 'bad' });
-        console.log(err.message);
-      }
-    }
-  });
-
   socket.on('get:chats', async (data) => {
     const { userId, userNickName } = data;
     try {
@@ -709,4 +636,9 @@ app.get('*', (req, res) => {
 httpServer
   .listen(PORT)
   .on("error", (err) => console.log(err.message))
-  .on("listening", () => console.log("go on port"));
+  .on("listening", () => {
+    console.log("go on port");
+    setTimeout(() => {
+      process.send('ready');
+    }, 1000);
+  });
