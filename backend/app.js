@@ -638,7 +638,4 @@ httpServer
   .on("error", (err) => console.log(err.message))
   .on("listening", () => {
     console.log("go on port");
-    setTimeout(() => {
-      process.send('ready');
-    }, 1000);
   });
