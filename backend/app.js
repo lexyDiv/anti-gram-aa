@@ -14,13 +14,13 @@ const socketIO = require("socket.io");
 const { Op } = require("sequelize");
 
 const path = require("path");
-const router = require('express').Router();
 
 const serverConfig = require("./config/serverConfig/serverConfig");
 const apiRouterPers = require("./routes/api/routes.personalisation");
 const apiRouterChats = require("./routes/api/reutes.chats");
 const apiRouterChatsAbout = require("./routes/api/routes.chatsAbout");
 const apiRouterChatInfo = require("./routes/api/routes.chatInfo");
+const apiRouterTest = require("./routes/api/routes.test");
 require("dotenv").config();
 
 const {
@@ -628,6 +628,10 @@ io.on("connection", (socket) => {
   socket.on("add:response", async (data) => {
     const { id } = data;
   });
+
+  socket.on('test', (data) => {
+    console.log(data);
+  });
 });
 
 const PORT = process.env.PORT ?? 4000;
@@ -639,6 +643,7 @@ app.use("/pers", apiRouterPers);
 app.use("/chats", apiRouterChats);
 app.use("/chatsAbout", apiRouterChatsAbout);
 app.use("/chatsInfo", apiRouterChatInfo);
+app.use("/test", apiRouterTest);
 
 app.get('*', (req, res) => {
   res.sendFile(path.resolve('../frontend/build/index.html'));

@@ -17,6 +17,8 @@ import { socketOperations } from "../functions/socketOperartions";
 import { getChatsSocket } from "../functions/getChatsSocket";
 import { userSocketJoin } from "../functions/userSocketJoin";
 import { sleepingListener } from "../components/chats/specialFunctions/sleepingListener";
+import { addFetch } from "../functions/addFetch";
+import axiosInstance from "../components/personalisation/instance";
 
 export const socket = io();
 let reLoad = false;
@@ -46,6 +48,18 @@ function App(): JSX.Element {
   const { data } = useSelector((state: RootState) => state.listing);
   const actualData = useRef(data);
   actualData.current = data;
+
+// useEffect(() => {
+//   // axiosInstance.get("http://localhost:4000/test").then((response) =>{
+//   //   console.log('response: ', response)
+//   // })
+//   // .catch(err => {
+//   //   console.log('err : ', err.message)
+//   // })  // ok!!!!!!!!!!!!!!!!
+//   // console.log('here')
+//   // socket.emit('test', {message: 'connect'})
+// }, []);
+
 
   useEffect(() => {
     navigate("/");
