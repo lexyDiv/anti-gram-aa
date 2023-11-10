@@ -44,6 +44,8 @@ function App(): JSX.Element {
   const actualUser = useRef(user);
   actualUser.current = user;
   const { data } = useSelector((state: RootState) => state.listing);
+  const actualData = useRef(data);
+  actualData.current = data;
 
   useEffect(() => {
     navigate("/");
@@ -89,7 +91,7 @@ function App(): JSX.Element {
       userSocketJoin({ socket, user });
       reLoad = true;
     }
-    actualUser.current && sleepingListener({ user: actualUser, dataChats: data });
+    actualUser.current && sleepingListener({ user: actualUser, actualData });
   }, [user]);
 
   return (
