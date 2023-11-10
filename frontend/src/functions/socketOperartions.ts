@@ -45,8 +45,7 @@ export function socketOperations({
   socket.on("get:chats", (data) => {
     dispatch(changeLoad(true));
     if (data.message === "ok") {
-
-      console.log(data)
+      console.log(data);
       dispatch(socketChatsUpdate(data.chatsData));
     } else {
       dispatch(setGlobalError(true));

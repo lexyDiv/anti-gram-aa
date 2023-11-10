@@ -9,6 +9,7 @@ const { Op } = require("sequelize");
 const {
   Midi_chat,
 } = require("../../db/models");
+const usersData = require("../../app");
 
 router.route("/:chatId").get(async (req, res) => {
   try {
@@ -17,6 +18,15 @@ router.route("/:chatId").get(async (req, res) => {
     res.json(chat_midis);
   } catch (err) {
     res.json({ message: err.message });
+  }
+});
+
+router.route('/sleeping/:nickName', (req, res) => {
+  const { nickName } = req.params;
+  if (!usersData.usersOnline[nickName]) {
+    res.json({ message: 'bad' });
+  } else {
+    res.json({ message: 'ok' });
   }
 });
 

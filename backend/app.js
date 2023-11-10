@@ -639,3 +639,5 @@ httpServer
   .on("listening", () => {
     console.log("go on port");
   });
+
+  module.exports = usersData;
