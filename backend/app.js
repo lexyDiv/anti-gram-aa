@@ -14,6 +14,8 @@ const socketIO = require("socket.io");
 const { Op } = require("sequelize");
 
 const path = require("path");
+const router = require('express').Router();
+
 const serverConfig = require("./config/serverConfig/serverConfig");
 const apiRouterPers = require("./routes/api/routes.personalisation");
 const apiRouterChats = require("./routes/api/reutes.chats");
@@ -39,6 +41,17 @@ const httpServer = http.createServer(app);
 const io = new socketIO.Server(httpServer);
 
 const usersData = { usersOnline: {}, socketsId: {} };
+
+ app.get('/special/sleeping/:nickName', (req, res) => {
+    const { nickName } = req.params;
+    if (!usersData.usersOnline[nickName]) {
+      console.log(111111111);
+      res.json({ message: 'bad' });
+    } else {
+      console.log(22222222);
+      res.json({ message: 'ok' });
+    }
+  });
 
 io.on("connection", (socket) => {
   socket.on("join", (data) => {

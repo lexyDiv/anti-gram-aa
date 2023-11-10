@@ -9,13 +9,15 @@ export function sleepingListener({
 }): void {
   setInterval(() => {
     if (user.current) {
-        addFetch(`/chatsInfo/sleeping/${user.current.nickName}`, "GET")
-        .then(res => res.json())
-        .then(data => {
-          if(data && data.message && data.message !== 'ok') {
+      console.log("here");
+      addFetch(`/special/sleeping/${user.current.nickName}`, "GET")
+        .then((res) => res.json())
+        .then((data) => {
+          if (data && data.message && data.message !== "ok") {
             window.location.reload();
           }
-        })
+          console.log(data);
+        });
     }
   }, 10000);
 }
