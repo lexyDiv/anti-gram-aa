@@ -43,6 +43,7 @@ function App(): JSX.Element {
   const { newChat } = useSelector((state: RootState) => state.listing);
   const actualUser = useRef(user);
   actualUser.current = user;
+  const { data } = useSelector((state: RootState) => state.listing);
 
   useEffect(() => {
     navigate("/");
@@ -88,7 +89,7 @@ function App(): JSX.Element {
       userSocketJoin({ socket, user });
       reLoad = true;
     }
-    actualUser.current && sleepingListener({ user: actualUser });
+    actualUser.current && sleepingListener({ user: actualUser, dataChats: data });
   }, [user]);
 
   return (

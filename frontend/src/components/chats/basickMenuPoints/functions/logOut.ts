@@ -1,7 +1,7 @@
 import { AppDispatch } from "../../../../store";
 import axiosInstance from "../../../personalisation/instance";
 import { User } from "../../../personalisation/types/User";
-import { changeLoad, setGlobalError } from "../../slices/listingSlice";
+import { changeLoad, setData, setGlobalError } from "../../slices/listingSlice";
 
 export function LogOut({
   user,

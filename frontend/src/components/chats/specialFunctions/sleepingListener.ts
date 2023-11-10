@@ -4,11 +4,13 @@ import { addFetch } from "../../../functions/addFetch";
 
 export function sleepingListener({
   user,
+  dataChats,
 }: {
   user: MutableRefObject<User>;
+  dataChats: boolean;
 }): void {
   setInterval(() => {
-    if (user.current) {
+    if (user.current && dataChats) {
       addFetch(`/special/sleeping/${user.current.nickName}`, "GET")
         .then((res) => res.json())
         .then((data) => {

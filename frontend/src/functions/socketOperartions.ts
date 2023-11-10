@@ -21,6 +21,7 @@ import { User } from "../components/personalisation/types/User";
 import { Chat } from "../components/chats/types/Chat";
 import {
   changeLoad,
+  setData,
   setGlobalError,
   updateFocusChat,
   updateFocusMessage,
@@ -46,6 +47,7 @@ export function socketOperations({
     dispatch(changeLoad(true));
     if (data.message === "ok") {
       dispatch(socketChatsUpdate(data.chatsData));
+      dispatch(setData(true));
     } else {
       dispatch(setGlobalError(true));
     }
