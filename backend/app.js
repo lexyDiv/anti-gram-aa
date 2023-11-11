@@ -42,9 +42,9 @@ const io = new socketIO.Server(httpServer);
 
 const usersData = { usersOnline: {}, socketsId: {} };
 
- app.get('/special/sleeping/:nickName', (req, res) => {
-    const { nickName } = req.params;
-    if (!usersData.usersOnline[nickName]) {
+ app.get('/special/sleeping/:socketId', (req, res) => {
+    const { socketId } = req.params;
+    if (!usersData.socketsId[socketId]) {
       res.json({ message: 'bad' });
     } else {
       res.json({ message: 'ok' });
@@ -76,6 +76,7 @@ io.on("connection", (socket) => {
       }
       io.to(contact).emit("online", { alienNickName: userNick });
     });
+    io.to(userNick).emit('socketId', { socketId: socket.id });
     usersData.socketsId[socket.id] = data.userNick;
   });
   socket.on("disconnecting", () => {

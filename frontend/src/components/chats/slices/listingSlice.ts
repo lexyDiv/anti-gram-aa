@@ -10,6 +10,7 @@ const initialState: {
   menuFocusChatId: number | null;
   globalError: boolean;
   data: boolean;
+  socketId: string;
 } = {
   focusChat: 0,
   loading: true,
@@ -19,12 +20,16 @@ const initialState: {
   menuFocusChatId: null,
   globalError: false,
   data: false,
+  socketId: '',
 };
 
 const listingSlice = createSlice({
   name: "listing",
   initialState,
   reducers: {
+    setSocketId: (state, action) => {
+      state.socketId = action.payload;
+    },
     setData: (state, action) => {
       state.data = action.payload;
     },
@@ -64,4 +69,5 @@ export const {
   updateMenuFocusChat,
   setGlobalError,
   setData,
+  setSocketId,
 } = listingSlice.actions;

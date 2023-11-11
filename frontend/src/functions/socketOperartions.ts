@@ -23,6 +23,7 @@ import {
   changeLoad,
   setData,
   setGlobalError,
+  setSocketId,
   updateFocusChat,
   updateFocusMessage,
   updateNewChat,
@@ -43,6 +44,9 @@ export function socketOperations({
   actualChats: MutableRefObject<Chat[]>;
   actualFocusMessage: MutableRefObject<number>;
 }): void {
+  socket.on('socketId', (data) => {
+    dispatch(setSocketId(data.socketId));
+  })
   socket.on("get:chats", (data) => {
     dispatch(changeLoad(true));
     if (data.message === "ok") {

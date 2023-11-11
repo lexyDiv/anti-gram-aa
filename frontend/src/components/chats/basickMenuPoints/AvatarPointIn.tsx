@@ -45,7 +45,10 @@ function AvatarPointIn({
           ) : (
             canSubmit && (
               <h5 style={{ color: "red", marginLeft: "40px" }}>
-                это не картинка!
+                Это не картинка! Годиться :{" "}
+                <span style={{ color: "green" }}>
+                  .png, .jpeg, .jpg, .gif, .ebp
+                </span>
               </h5>
             )
           )}

@@ -43,23 +43,12 @@ function App(): JSX.Element {
   const actualState = useRef(useSelector((state: RootState) => state.chats));
   actualState.current = useSelector((state: RootState) => state.chats);
   const { newChat } = useSelector((state: RootState) => state.listing);
-  const actualUser = useRef(user);
-  actualUser.current = user;
+  const { socketId } = useSelector((state: RootState) => state.listing);
+  const actualSocketId = useRef(socketId);
+  actualSocketId.current = socketId;
   const { data } = useSelector((state: RootState) => state.listing);
   const actualData = useRef(data);
   actualData.current = data;
-
-// useEffect(() => {
-//   // axiosInstance.get("http://localhost:4000/test").then((response) =>{
-//   //   console.log('response: ', response)
-//   // })
-//   // .catch(err => {
-//   //   console.log('err : ', err.message)
-//   // })  // ok!!!!!!!!!!!!!!!!
-//   // console.log('here')
-//   // socket.emit('test', {message: 'connect'})
-// }, []);
-
 
   useEffect(() => {
     navigate("/");
@@ -105,7 +94,7 @@ function App(): JSX.Element {
       userSocketJoin({ socket, user });
       reLoad = true;
     }
-    actualUser.current && sleepingListener({ user: actualUser, actualData });
+    user && sleepingListener({ actualSocketId, actualData });
   }, [user]);
 
   return (

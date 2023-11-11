@@ -1,17 +1,16 @@
 import { MutableRefObject } from "react";
-import { User } from "../../personalisation/types/User";
 import { addFetch } from "../../../functions/addFetch";
 
 export function sleepingListener({
-  user,
   actualData,
+  actualSocketId,
 }: {
-  user: MutableRefObject<User>;
   actualData: MutableRefObject<boolean>;
+  actualSocketId: MutableRefObject<string>;
 }): void {
   setInterval(() => {
-    if (user.current && actualData.current) {
-      addFetch(`/special/sleeping/${user.current.nickName}`, "GET")
+    if (actualData.current && actualSocketId.current) {
+      addFetch(`/special/sleeping/${actualSocketId.current}`, "GET")
         .then((res) => res.json())
         .then((data) => {
           if (data && data.message && data.message !== "ok") {
