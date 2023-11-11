@@ -18,6 +18,8 @@ import { getChatsSocket } from "../functions/getChatsSocket";
 import { userSocketJoin } from "../functions/userSocketJoin";
 import { sleepingListener } from "../components/chats/specialFunctions/sleepingListener";
 
+
+
 export const socket = io();
 let reLoad = false;
 
@@ -47,7 +49,7 @@ function App(): JSX.Element {
   const { data } = useSelector((state: RootState) => state.listing);
   const actualData = useRef(data);
   actualData.current = data;
-
+ 
   useEffect(() => {
     navigate("/");
     window.addEventListener("resize", () => {

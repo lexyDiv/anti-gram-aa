@@ -15,6 +15,7 @@ const { Op } = require("sequelize");
 
 const path = require("path");
 
+const fs = require('fs');
 const serverConfig = require("./config/serverConfig/serverConfig");
 const apiRouterPers = require("./routes/api/routes.personalisation");
 const apiRouterChats = require("./routes/api/reutes.chats");
@@ -39,6 +40,7 @@ const chatFormation = require("./middleware/chatFormation");
 const app = express();
 const httpServer = http.createServer(app);
 const io = new socketIO.Server(httpServer);
+const soundsPath = require('./public/sounds/soundsPath');
 
 const usersData = { usersOnline: {}, socketsId: {} };
 

@@ -24,6 +24,7 @@ function NewChatPoint({
   const [passwordValid, setPasswordValid] = useState(false);
   const dispatch = useAppDispatch();
   const { user } = useSelector((state: RootState) => state.user);
+ // console.log('status : ', status, 'fotoValid : ', fotoValid, 'nameValid : ', nameValide, 'passValid : ', passwordValid)
   return (
     <div id="users-box" className="new-chat" onClick={() => setMessage("")}>
       <div className="new-chat-line">
@@ -132,7 +133,8 @@ function NewChatPoint({
         </div>
       )}
       <div className="new-chat-line" style={{ justifyContent: "center" }}>
-        {(status || (!status && passwordValid)) && nameValide && fotoValid && (
+        {((!status && fotoValid && nameValide === "ok" && passwordValid) ||
+          (status && fotoValid && nameValide === "ok")) && (
           <button
             onClick={() => {
               newChatFetch({

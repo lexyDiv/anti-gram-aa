@@ -11,6 +11,7 @@ const initialState: {
   globalError: boolean;
   data: boolean;
   socketId: string;
+  //sounds: {newMessage}
 } = {
   focusChat: 0,
   loading: true,
