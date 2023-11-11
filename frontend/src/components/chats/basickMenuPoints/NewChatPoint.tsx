@@ -24,7 +24,7 @@ function NewChatPoint({
   const [passwordValid, setPasswordValid] = useState(false);
   const dispatch = useAppDispatch();
   const { user } = useSelector((state: RootState) => state.user);
- // console.log('status : ', status, 'fotoValid : ', fotoValid, 'nameValid : ', nameValide, 'passValid : ', passwordValid)
+  // console.log('status : ', status, 'fotoValid : ', fotoValid, 'nameValid : ', nameValide, 'passValid : ', passwordValid)
   return (
     <div id="users-box" className="new-chat" onClick={() => setMessage("")}>
       <div className="new-chat-line">
@@ -89,7 +89,10 @@ function NewChatPoint({
         <input
           type="checkBox"
           style={{ width: "20px", height: "20px", margin: "10px" }}
-          onChange={() => setStatus((prev) => !prev)}
+          onChange={() => {
+            setStatus((prev) => !prev);
+            setPasswordValid(false);
+          }}
         />
         <div style={{ display: "flex", marginTop: "18px" }}>
           <p>статус :</p>
