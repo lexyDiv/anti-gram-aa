@@ -17,8 +17,6 @@ import { socketOperations } from "../functions/socketOperartions";
 import { getChatsSocket } from "../functions/getChatsSocket";
 import { userSocketJoin } from "../functions/userSocketJoin";
 import { sleepingListener } from "../components/chats/specialFunctions/sleepingListener";
-import { addFetch } from "../functions/addFetch";
-import axiosInstance from "../components/personalisation/instance";
 
 export const socket = io();
 let reLoad = false;
