@@ -5,6 +5,7 @@ import { User } from "../../personalisation/types/User";
 import { AppDispatch } from "../../../store";
 import { getChatsSocket } from "../../../functions/getChatsSocket";
 import { userSocketJoin } from "../../../functions/userSocketJoin";
+import { changeLoad } from "../slices/listingSlice";
 
 export function sleepingListener({
   actualData,
@@ -26,9 +27,10 @@ export function sleepingListener({
        // console.log('data : ', data)
         if (user && data && data.message && data.message !== "ok") {
          // console.log('RELOAD')
-         window.location.reload();
-        //  userSocketJoin({ socket, user });
-        //  getChatsSocket({ socket, user, dispatch });
+        // window.location.reload();
+        dispatch(changeLoad(false));
+         userSocketJoin({ socket, user });
+         getChatsSocket({ socket, user, dispatch });
         }
       });
   });
