@@ -94,7 +94,7 @@ function App(): JSX.Element {
       userSocketJoin({ socket, user });
       reLoad = true;
     }
-    user && sleepingListener({ actualSocketId, actualData });
+    user && sleepingListener({ actualSocketId, actualData, socket, user, dispatch });
   }, [user]);
 
   return (
