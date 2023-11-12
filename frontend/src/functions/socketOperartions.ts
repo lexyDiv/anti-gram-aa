@@ -30,6 +30,7 @@ import {
 } from "../components/chats/slices/listingSlice";
 import { MutableRefObject } from "react";
 import { addContact } from "../components/personalisation/slises/userSlice";
+import { Sounds } from "../components/chats/types/Sounds";
 
 export function socketOperations({
   socket,
@@ -37,12 +38,14 @@ export function socketOperations({
   user,
   actualChats,
   actualFocusMessage,
+  sounds,
 }: {
   socket: Socket;
   dispatch: AppDispatch;
   user: User;
   actualChats: MutableRefObject<Chat[]>;
   actualFocusMessage: MutableRefObject<number>;
+  sounds: Sounds;
 }): void {
   socket.on('socketId', (data) => {
     dispatch(setSocketId(data.socketId));
@@ -152,6 +155,8 @@ export function socketOperations({
         dispatch(
           newMessage({ chatId: data.message.chat_id, newMessage: true })
         );
+      } else {
+        sounds.newMessage.play();
       }
       dispatch(addMessageToChat(data.message));
     }

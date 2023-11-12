@@ -20,6 +20,7 @@ function ChatMenu({
   const [del, setDel] = useState(false);
   const { user } = useSelector((state: RootState) => state.user);
   const [info, setInfo] = useState(false);
+  const { images } = useSelector((state: RootState) => state.listing);
   return (
     <div
       id="chat-menu-screen"
@@ -93,7 +94,7 @@ function ChatMenu({
               dispatch(updateMenuFocusChat(null));
             }}
           >
-            <p>x</p>
+            <img className="new-closed" src={images.closed} alt="img" />
           </div>
         </>
       ) : (

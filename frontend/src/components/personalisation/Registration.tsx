@@ -3,8 +3,9 @@ import { regFotoInOutOrder } from "./functions/regFotoInOutOrder";
 import { inputOutDefault } from "./functions/inputOutDefault";
 import { checkNick } from "../../functions/checkNick";
 import { userRegisration } from "./functions/userRegisration";
-import { useAppDispatch } from "../../store";
+import { RootState, useAppDispatch } from "../../store";
 import { useNavigate } from "react-router-dom";
+import { useSelector } from "react-redux";
 
 function Registration({
   screen,
@@ -22,6 +23,7 @@ function Registration({
   const height = screen.height <= 600 ? screen.height / 10 : screen.height / 15;
   const dispatch = useAppDispatch();
   const navigate = useNavigate();
+  const { images } = useSelector((state: RootState) => state.listing);
 
   return (
     <form action="POST" id="pers-form" onSubmit={(e) => e.preventDefault()}>
@@ -46,10 +48,10 @@ function Registration({
               id="pers-stop"
               src={
                 nickValid === "bad"
-                  ? "https://www.onlygfx.com/wp-content/uploads/2019/06/6-red-grunge-prohibition-sign-5.png"
+                  ? images.stop
                   : nickValid === "ok"
-                  ? "https://www.pngarts.com/files/10/Check-Mark-Free-PNG-Image.png"
-                  : "https://vektor-penza.ru/catalog/view/image/loading.gif"
+                  ? images.green
+                  : images.loading
               }
               alt="img"
               onClick={() => {
@@ -103,7 +105,7 @@ function Registration({
             />
             <img
               className="pers-form-eye"
-              src="https://gigamart.ru/upload/medialibrary/8d7/devices.png"
+              src={images.addImage}
               alt="img"
               style={{
                 borderColor: `${
@@ -131,7 +133,7 @@ function Registration({
         />
         <img
           className="pers-form-eye"
-          src="https://static.vecteezy.com/system/resources/previews/009/973/675/non_2x/eye-icon-sign-symbol-design-free-png.png"
+          src={images.eye}
           alt="img"
           style={{ borderColor: `${!showPass ? "rgb(48, 59, 59)" : "green"}` }}
           onClick={() => {

@@ -1,4 +1,6 @@
 import React from "react";
+import { useSelector } from "react-redux";
+import { RootState } from "../../store";
 
 function ImageField({
   setImage,
@@ -9,6 +11,7 @@ function ImageField({
   image: string;
   setImageField: (value: boolean) => void;
 }): JSX.Element {
+  const { images } = useSelector((state: RootState) => state.listing);
   return (
     <div
       id="image-field"
@@ -33,7 +36,7 @@ function ImageField({
         <button id="image-field-btn" className="btn-message">
           <img
             className="btn-img"
-            src="https://static.tildacdn.com/tild6661-6562-4964-a663-373336366431/dc45qXe9i.png"
+            src={images.plast}
             alt="img"
           />
         </button>

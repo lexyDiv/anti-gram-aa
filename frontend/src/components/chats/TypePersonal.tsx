@@ -3,6 +3,8 @@ import { Chat } from "./types/Chat";
 import { stringFormat } from "../../functions/stringFormate";
 import { checkVieweds } from "../../functions/checkVieweds";
 import { User } from "../personalisation/types/User";
+import { useSelector } from "react-redux";
+import { RootState } from "../../store";
 
 function TypePersonal({
   chat,
@@ -13,6 +15,7 @@ function TypePersonal({
   screen: { width: number; height: number };
   user: User;
 }): JSX.Element {
+  const { images } = useSelector((state: RootState) => state.listing);
   const str = chat.messages.length
     ? chat.messages[chat.messages.length - 1].body
     : "ещё нет сообщений";
@@ -20,7 +23,7 @@ function TypePersonal({
   const foto =
     chat.alien && chat.alien.foto
       ? chat.alien.foto
-      : "https://avatars.mds.yandex.net/i?id=374f91d0f4141680cdbe2e9320b311cb_l-8289735-images-thumbs&n=13";
+      : images.clearFoto;
 
   return (
     <>

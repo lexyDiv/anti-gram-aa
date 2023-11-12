@@ -19,6 +19,7 @@ function GetUsers({
   const nick = useRef<HTMLInputElement>(null);
   const { user } = useSelector((state: RootState) => state.user);
   const [err, setErr] = useState("");
+  const { images } = useSelector((state: RootState) => state.listing);
 
   return (
     <div id="get-users">
@@ -26,7 +27,7 @@ function GetUsers({
       <div id="get-box">
         <input type="text" ref={nick} onClick={() => setErr("")} />
         <img
-          src="https://static.tildacdn.com/tild6337-3832-4661-a230-623831396130/magnifying-glass_4.png"
+          src={images.scan}
           alt="img"
           onClick={() => {
             user &&

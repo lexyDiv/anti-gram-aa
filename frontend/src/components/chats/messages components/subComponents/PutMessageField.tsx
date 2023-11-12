@@ -30,6 +30,7 @@ function PutMessageField({
   const [emojiField, setEmojiField] = useState(false);
   const { user } = useSelector((state: RootState) => state.user);
   const dispatch = useAppDispatch();
+  const { images } = useSelector((state: RootState) => state.listing);
 
   return (
     <div id="add-message">
@@ -84,7 +85,7 @@ function PutMessageField({
                 borderColor: `${emojiId ? "blue" : "rgb(129, 128, 128, 0)"}`,
               }}
               className="btn-img"
-              src="https://avatars.mds.yandex.net/i?id=ec105478659a8fa231cf971fbcb7a97a_l-5315783-images-thumbs&n=13"
+              src={images.emojis}
               alt="img"
             />
           </button>
@@ -103,7 +104,7 @@ function PutMessageField({
               style={{
                 borderColor: `${image ? "blue" : "rgb(129, 128, 128, 0)"}`,
               }}
-              src="https://www.pinclipart.com/picdir/big/581-5812140_area-purple-text-galery-icon-png-clipart.png"
+              src={images.addImage}
               alt="img"
             />
           </button>
@@ -112,7 +113,7 @@ function PutMessageField({
             <button id="btn-add-massage" className="btn-message" type="submit">
               <img
                 className="btn-img"
-                src="https://moondiamondsmadrid.com/frontend/img/whatsappSendButton.png"
+                src={images.send}
                 alt="img"
               />
             </button>

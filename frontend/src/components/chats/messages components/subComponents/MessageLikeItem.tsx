@@ -15,10 +15,11 @@ function MessageLikeItem({
   screen: { width: number; height: number };
   socket: Socket;
 }): JSX.Element {
+  const { images } = useSelector((state: RootState) => state.listing);
   const foto =
     like.User &&
     (like.User.foto ||
-      "https://avatars.mds.yandex.net/i?id=374f91d0f4141680cdbe2e9320b311cb_l-8289735-images-thumbs&n=13");
+      images.clearFoto);
   const date = JSON.parse(like.date);
   const { user } = useSelector((state: RootState) => state.user);
   const { chats } = useSelector((state: RootState) => state.chats);
@@ -30,7 +31,7 @@ function MessageLikeItem({
 
       <img
         className="l-img"
-        src="https://www.pinclipart.com/picdir/big/39-397673_daumen-hoch-like-button-png-clipart.png"
+        src={images.like}
         alt="img"
       />
       <div className="message-like-item-body">
@@ -53,7 +54,7 @@ function MessageLikeItem({
             {user.id !== like.User.id ? (
               <div className="like-write">
                 <img
-                  src="https://icon-library.com/images/pencil-png-icon/pencil-png-icon-1.jpg"
+                  src={images.pen}
                   alt="img"
                   onClick={() => {
                     addPersonalChat({

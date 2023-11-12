@@ -4,6 +4,8 @@ import MessageLikeItem from "./MessageLikeItem";
 import MessageDislikeItem from "./MessageDislikeItem";
 import { Socket } from "socket.io-client";
 import { Message } from "../../types/Message";
+import { useSelector } from "react-redux";
+import { RootState } from "../../../../store";
 
 function LikeDislikeList({
   message,
@@ -16,6 +18,7 @@ function LikeDislikeList({
   screen: { width: number; height: number };
   socket: Socket;
 }): JSX.Element {
+  const { images } = useSelector((state: RootState) => state.listing);
   return (
     <div id="l-d-box">
       <div
@@ -43,7 +46,7 @@ function LikeDislikeList({
             ))}
       </div>
       <div id="likes-closed">
-        <p>x</p>
+      <img className="new-closed" src={images.closed} alt="img" />
       </div>
     </div>
   );

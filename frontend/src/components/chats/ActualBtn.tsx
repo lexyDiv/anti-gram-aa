@@ -1,11 +1,12 @@
 import React, { MutableRefObject } from "react";
 import { Chat } from "./types/Chat";
-import { AppDispatch, TimeOut } from "../../store";
+import { AppDispatch, RootState, TimeOut } from "../../store";
 import { changeForvard, clickOnChat, scrollTopChat } from "./slices/chatsSlice";
 import { scrollOrder } from "../../functions/scrollOrder";
 import { Message } from "./types/Message";
 import { Socket } from "socket.io-client";
 import { User } from "../personalisation/types/User";
+import { useSelector } from "react-redux";
 
 function ActualBtn({
   screen,
@@ -31,6 +32,7 @@ function ActualBtn({
   setActual: (value: boolean) => void;
   clickOnActual: boolean;
 }): JSX.Element {
+  const { images } = useSelector((state: RootState) => state.listing);
   return (
     <>
       <img
@@ -57,7 +59,7 @@ function ActualBtn({
           });
         }}
         style={{ top: `${screen.height - 65}px` }}
-        src="https://catherineasquithgallery.com/uploads/posts/2023-02/thumbs/1676524252_catherineasquithgallery-com-p-znachki-na-zelenom-fone-41.png"
+        src={images.down}
         alt="img"
       />
     </>

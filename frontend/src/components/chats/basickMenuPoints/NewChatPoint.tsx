@@ -24,7 +24,7 @@ function NewChatPoint({
   const [passwordValid, setPasswordValid] = useState(false);
   const dispatch = useAppDispatch();
   const { user } = useSelector((state: RootState) => state.user);
-  // console.log('status : ', status, 'fotoValid : ', fotoValid, 'nameValid : ', nameValide, 'passValid : ', passwordValid)
+  const { images } = useSelector((state: RootState) => state.listing);
   return (
     <div id="users-box" className="new-chat" onClick={() => setMessage("")}>
       <div className="new-chat-line">
@@ -43,10 +43,10 @@ function NewChatPoint({
                 id="pers-stop"
                 src={
                   nameValide === "bad"
-                    ? "https://www.onlygfx.com/wp-content/uploads/2019/06/6-red-grunge-prohibition-sign-5.png"
+                    ? images.stop
                     : nameValide === "ok"
-                    ? "https://www.pngarts.com/files/10/Check-Mark-Free-PNG-Image.png"
-                    : "https://vektor-penza.ru/catalog/view/image/loading.gif"
+                    ? images.green
+                    : images.loading
                 }
                 alt="img"
                 onClick={() => {
@@ -73,8 +73,8 @@ function NewChatPoint({
                 id="pers-stop"
                 src={
                   !fotoValid
-                    ? "https://www.onlygfx.com/wp-content/uploads/2019/06/6-red-grunge-prohibition-sign-5.png"
-                    : "https://www.pngarts.com/files/10/Check-Mark-Free-PNG-Image.png"
+                    ? images.stop
+                    : images.green
                 }
                 alt="img"
                 onClick={() => {
@@ -123,8 +123,8 @@ function NewChatPoint({
                 id="pers-stop"
                 src={
                   !passwordValid
-                    ? "https://www.onlygfx.com/wp-content/uploads/2019/06/6-red-grunge-prohibition-sign-5.png"
-                    : "https://www.pngarts.com/files/10/Check-Mark-Free-PNG-Image.png"
+                    ? images.stop
+                    : images.green
                 }
                 alt="img"
                 onClick={() => {

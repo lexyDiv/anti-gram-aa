@@ -3,12 +3,13 @@ import { Message } from "../types/Message";
 import { Socket } from "socket.io-client";
 import { Chat } from "../types/Chat";
 import { getMessageContent } from "../../../functions/getMessageContent";
-import { useAppDispatch } from "../../../store";
+import { RootState, useAppDispatch } from "../../../store";
 import "./styles/AlienMessagePersonal.css";
 import About from "./subComponents/About";
 import MessageComponent from "./subComponents/MessageComponent";
 import { emojis } from "../../../objects/emojis";
 import { updateFocusMessage } from "../slices/listingSlice";
+import { useSelector } from "react-redux";
 
 function AlienMessagePersonal({
   socket,
@@ -28,6 +29,7 @@ function AlienMessagePersonal({
   const content = getMessageContent({ string: message.body });
   const dispatch = useAppDispatch();
   const date = JSON.parse(message.date);
+  const { images } = useSelector((state: RootState) => state.listing);
 
   return (
     <div
@@ -84,7 +86,7 @@ function AlienMessagePersonal({
           >
             <img
               className="my-menu-img"
-              src="https://linoplanet.ru/assets/template/linoplanet/img/png/list.png"
+              src={images.menu}
               alt="img"
             />
           </div>

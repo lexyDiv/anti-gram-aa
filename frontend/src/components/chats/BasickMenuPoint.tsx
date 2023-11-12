@@ -119,10 +119,4 @@ function BasickMenuPoint({
   );
 }
 
-// socket,
-//               dispatch,
-//               chats,
-//               chatId: chat.id,
-//               setMenu,
-
 export default BasickMenuPoint;

@@ -20,6 +20,7 @@ function ChatItem({
   const dispatch = useAppDispatch();
   const { menuFocusChatId } = useSelector((state: RootState) => state.listing);
   const [out, setOut] = useState(true);
+  const { images } = useSelector((state: RootState) => state.listing);
 
   useEffect(() => {
     !chat.stepsPlan.length &&
@@ -71,7 +72,7 @@ function ChatItem({
       >
         <img
           className="my-menu-img"
-          src="https://linoplanet.ru/assets/template/linoplanet/img/png/list.png"
+          src={images.menu}
           alt="img"
         />
       </div>

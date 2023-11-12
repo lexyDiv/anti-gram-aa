@@ -27,6 +27,7 @@ function MyMessageMenu({
   const [localState, setLocalState] = useState("");
   const { user } = useSelector((state: RootState) => state.user);
   const { chats } = useSelector((state: RootState) => state.chats);
+  const { images } = useSelector((state: RootState) => state.listing);
 
   const type = user && user.id === message.user_id ? "my" : "alien";
 
@@ -177,7 +178,7 @@ function MyMessageMenu({
                 dispatch(updateFocusMessage(0));
               }}
             >
-              <p>x</p>
+              <img className="new-closed" src={images.closed} alt="img" />
             </div>
           </>
         )}

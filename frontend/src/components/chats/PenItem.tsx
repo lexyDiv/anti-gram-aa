@@ -1,4 +1,6 @@
 import React from "react";
+import { useSelector } from "react-redux";
+import { RootState } from "../../store";
 
 function PenItem({
   screen,
@@ -7,6 +9,7 @@ function PenItem({
   screen: { width: number; height: number };
   setWright: (value: boolean) => void;
 }): JSX.Element {
+  const { images } = useSelector((state: RootState) => state.listing);
   return (
     <div
       id="pen-box"
@@ -18,7 +21,7 @@ function PenItem({
       <img
         id="pen"
         onClick={() => setWright(true)}
-        src="https://icon-library.com/images/pencil-png-icon/pencil-png-icon-1.jpg"
+        src={images.pen}
         alt="img"
       />
     </div>

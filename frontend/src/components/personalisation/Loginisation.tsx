@@ -28,7 +28,6 @@ function Loginisation({
           placeholder="Ник"
           autoComplete="username"
           ref={inputNick}
-          //   onChange={() => checkNick({ inputNick, setNickValid, setMessage })}
           onClick={() => {
             setMessage("");
           }}

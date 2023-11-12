@@ -16,10 +16,11 @@ function FocusChatAll({
   const { user } = useSelector((state: RootState) => state.user);
   const dispatch = useAppDispatch();
   const [gab, setGab] = useState({ width: 45, height: 45, right: 115, top: 0 });
+  const { images } = useSelector((state: RootState) => state.listing);
 
   const foto = chat.foto
     ? chat.foto
-    : "https://avatars.mds.yandex.net/i?id=374f91d0f4141680cdbe2e9320b311cb_l-8289735-images-thumbs&n=13";
+    : images.clearFoto;
   return (
     <div id="focus-chat">
               <img
@@ -58,7 +59,7 @@ function FocusChatAll({
       >
         <img
           className="my-menu-img"
-          src="https://linoplanet.ru/assets/template/linoplanet/img/png/list.png"
+          src={images.menu}
           alt="img"
         />
       </div>

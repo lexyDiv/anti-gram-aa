@@ -28,6 +28,7 @@ function MyMessagePersonal({
   const content = getMessageContent({ string: message.body });
   const dispatch = useAppDispatch();
   const date = JSON.parse(message.date);
+  const { images } = useSelector((state: RootState) => state.listing);
 
   return (
     <div className="my-message-personal-line" data-messageid={message.id}>
@@ -78,7 +79,7 @@ function MyMessagePersonal({
           >
             <img
               className="my-menu-img"
-              src="https://linoplanet.ru/assets/template/linoplanet/img/png/list.png"
+              src={images.menu}
               alt="img"
             />
           </div>
@@ -87,13 +88,13 @@ function MyMessagePersonal({
             <div className="get-message-personal">
               <img
                 className="green"
-                src="https://www.pngarts.com/files/10/Check-Mark-Free-PNG-Image.png"
+                src={images.green}
                 alt="img"
               />
               {message.seengs ? (
                 <img
                   className="green"
-                  src="https://www.pngarts.com/files/10/Check-Mark-Free-PNG-Image.png"
+                  src={images.green}
                 />
               ) : (
                 false

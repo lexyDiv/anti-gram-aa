@@ -21,10 +21,11 @@ function Header({
   const dispatch = useAppDispatch();
   const [menu, setMenu] = useState(false);
   const [gabarit, setGabarit] = useState({ width: 50, height: 50 });
+  const { images } = useSelector((state: RootState) => state.listing);
   const foto =
     user && user.foto
       ? user.foto
-      : "https://avatars.mds.yandex.net/i?id=374f91d0f4141680cdbe2e9320b311cb_l-8289735-images-thumbs&n=13";
+      : images.clearFoto;
   const newMessagesIs = headerNewMessages({ user, chats });
   return (
     <>
@@ -48,7 +49,7 @@ function Header({
 
         <img
           id="menu-image"
-          src="https://linoplanet.ru/assets/template/linoplanet/img/png/list.png"
+          src={images.menu}
           alt="img"
           style={{ borderColor: `${menu ? "rgb(255,0,0,1)" : "rgb(0,0,0,0)"}` }}
           onClick={() => {
@@ -59,7 +60,7 @@ function Header({
         {focusChat ? (
           <img
             id="back-to-chats"
-            src="https://thypix.com/wp-content/uploads/blue-arrow-24.png"
+            src={images.back}
             onClick={() => {
               dispatch(updateFocusChat(0));
             }}

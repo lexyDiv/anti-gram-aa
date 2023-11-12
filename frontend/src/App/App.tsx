@@ -49,6 +49,7 @@ function App(): JSX.Element {
   const { data } = useSelector((state: RootState) => state.listing);
   const actualData = useRef(data);
   actualData.current = data;
+  const { sounds } = useSelector((state: RootState) => state.listing);
  
   useEffect(() => {
     navigate("/");
@@ -88,6 +89,7 @@ function App(): JSX.Element {
         user,
         actualChats,
         actualFocusMessage,
+        sounds,
       });
 
       getChatsSocket({ socket, user, dispatch });

@@ -15,6 +15,7 @@ function PasswordPoint({
   const [userInfoErr, setUserInfoErr] = useState("");
   const [complite, setComplite] = useState(false);
   const { user } = useSelector((state: RootState) => state.user);
+  const { images } = useSelector((state: RootState) => state.listing);
   return (
     <form
       action=""
@@ -43,7 +44,7 @@ function PasswordPoint({
               style={{
                 borderColor: `${showPass ? "green" : "rgba(38, 41, 41)"}`,
               }}
-              src="https://static.vecteezy.com/system/resources/previews/009/973/675/non_2x/eye-icon-sign-symbol-design-free-png.png"
+              src={images.eye}
               alt="img"
               onClick={() => {
                 setShowPass((prev) => !prev);
@@ -74,7 +75,7 @@ function PasswordPoint({
               style={{
                 borderColor: `${showNewPass ? "green" : "rgba(38, 41, 41)"}`,
               }}
-              src="https://static.vecteezy.com/system/resources/previews/009/973/675/non_2x/eye-icon-sign-symbol-design-free-png.png"
+              src={images.eye}
               alt="img"
               onClick={() => {
                 setShowNewPass((prev) => !prev);

@@ -4,8 +4,9 @@ import PutMessageField from "./PutMessageField";
 import { Socket } from "socket.io-client";
 import { Message } from "../../types/Message";
 import { Chat } from "../../types/Chat";
-import { useAppDispatch } from "../../../../store";
+import { RootState, useAppDispatch } from "../../../../store";
 import { updateFocusMessage } from "../../slices/listingSlice";
+import { useSelector } from "react-redux";
 
 function AlienMessageMenu({
   screen,
@@ -22,6 +23,7 @@ function AlienMessageMenu({
   const [backgroundColor, setBackgroundColor] = useState("rgb(0, 0, 255, 0)");
   const [del, setDel] = useState(false);
   const [localState, setLocalState] = useState("");
+  const { images } = useSelector((state: RootState) => state.listing);
 
   useEffect(() => {
     setTimeout(() => {
@@ -123,7 +125,7 @@ function AlienMessageMenu({
                 dispatch(updateFocusMessage(0));
               }}
             >
-              <p>x</p>
+             <img className="new-closed" src={images.closed} alt="img" />
             </div>
           </>
         )}

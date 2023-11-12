@@ -28,9 +28,10 @@ function AlienMessageAll({
   focusMessage: number;
   messageBox: MutableRefObject<HTMLElement | null>;
 }): JSX.Element {
+  const { images } = useSelector((state: RootState) => state.listing);
   const foto =
     message.User?.foto ||
-    "https://avatars.mds.yandex.net/i?id=374f91d0f4141680cdbe2e9320b311cb_l-8289735-images-thumbs&n=13";
+    images.clearFoto;
   const date = JSON.parse(message.date);
   const content = getMessageContent({ string: message.body });
   const { user } = useSelector((state: RootState) => state.user);
@@ -106,7 +107,7 @@ function AlienMessageAll({
                               dispatch,
                             });
                         }}
-                        src="https://www.pinclipart.com/picdir/big/39-397673_daumen-hoch-like-button-png-clipart.png"
+                        src={images.like}
                         alt="img"
                       />
                       <p>{message.Likes.length}</p>
@@ -124,7 +125,7 @@ function AlienMessageAll({
                               dispatch,
                             });
                         }}
-                        src="https://webstockreview.net/images/reflection-clipart-self-assessment-14.png"
+                        src={images.dizlike}
                         alt="img"
                       />
                       <p>{message.Dislikes.length}</p>
@@ -141,7 +142,7 @@ function AlienMessageAll({
             >
               <img
                 className="my-menu-img"
-                src="https://linoplanet.ru/assets/template/linoplanet/img/png/list.png"
+                src={images.menu}
                 alt="img"
               />
             </div>

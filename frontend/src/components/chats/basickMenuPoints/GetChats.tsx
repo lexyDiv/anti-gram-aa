@@ -26,6 +26,7 @@ function GetChats({
   const dispatch = useAppDispatch();
   const { user } = useSelector((state: RootState) => state.user);
   const [err, setErr] = useState("");
+  const { images } = useSelector((state: RootState) => state.listing);
   return (
     <div id="get-users">
       <p style={{ color: "white", marginLeft: "-35px" }}>
@@ -34,7 +35,7 @@ function GetChats({
       <div id="get-box">
         <input type="text" ref={chatName} onClick={() => setErr("")} />
         <img
-          src="https://static.tildacdn.com/tild6337-3832-4661-a230-623831396130/magnifying-glass_4.png"
+          src={images.scan}
           alt="img"
           onClick={() => {
             GetChatsAll({

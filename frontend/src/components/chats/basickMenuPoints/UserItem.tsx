@@ -18,10 +18,11 @@ function UserItem({
   const { user } = useSelector((state: RootState) => state.user);
   const { chats } = useSelector((state: RootState) => state.chats);
   const dispatch = useAppDispatch();
+  const { images } = useSelector((state: RootState) => state.listing);
   const foto =
     alien && alien.foto
       ? alien.foto
-      : "https://avatars.mds.yandex.net/i?id=374f91d0f4141680cdbe2e9320b311cb_l-8289735-images-thumbs&n=13";
+      : images.clearFoto;
   const nickName =
     alien && alien.nickName.length <= 10
       ? alien.nickName

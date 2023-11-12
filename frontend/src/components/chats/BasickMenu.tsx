@@ -3,6 +3,8 @@ import "./styles/BasickMenu.css";
 import BasickMenuPoint from "./BasickMenuPoint";
 import { Socket } from "socket.io-client";
 import { EnterPass } from "./types/EntarPass";
+import { useSelector } from "react-redux";
+import { RootState } from "../../store";
 
 function BasickMenu({
   setMenu,
@@ -20,6 +22,7 @@ function BasickMenu({
 
   const [menuPoint, setMenuPoint] = useState("");
   const [enterPass, setEnterPass] = useState<EnterPass>({id: 0, status: ''});
+  const { images } = useSelector((state: RootState) => state.listing);
 
   useEffect(() => {
     setTimeout(() => {
@@ -56,7 +59,7 @@ function BasickMenu({
     >
       {!out && (
         <div className="basick-closed">
-          <p>x</p>
+          <img className="new-closed" src={images.closed} alt="img" />
         </div>
       )}
 
