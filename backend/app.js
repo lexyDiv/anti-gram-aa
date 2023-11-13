@@ -165,10 +165,10 @@ io.on("connection", (socket) => {
   socket.on("new:all:chat", async (data) => {
     try {
       const { name, foto, password, userId, nickName } = data;
-      const today = new Date();
-      const localoffset = -(today.getTimezoneOffset() / 60);
-      const destoffset = 6;
-      const offset = destoffset - localoffset;
+      //  const today = new Date();
+      //  const localoffset = -(today.getTimezoneOffset() / 60);
+      const destoffset = 3;
+      const offset = destoffset;
       const d = new Date(new Date().getTime() + offset * 3600 * 1000);
 
             const date = String(d).split(" ");
@@ -274,13 +274,11 @@ io.on("connection", (socket) => {
     try {
       const { userId, body, emojiId, chatId, image, messageId } = data;
 
-      const today = new Date();
-const localoffset = -(today.getTimezoneOffset() / 60);
-const destoffset = 6;
-const offset = destoffset - localoffset;
-const d = new Date(new Date().getTime() + offset * 3600 * 1000);
+      const destoffset = 3;
+      const offset = destoffset;
+      const d = new Date(new Date().getTime() + offset * 3600 * 1000);
 
-      const date = String(d).split(" ");
+            const date = String(d).split(" ");
       const messageData = await Message.create({
         user_id: userId,
         body,
@@ -480,7 +478,11 @@ const d = new Date(new Date().getTime() + offset * 3600 * 1000);
         if (oldLike) {
           return;
         }
-        const date = Date().split(" ");
+        const destoffset = 3;
+        const offset = destoffset;
+        const d = new Date(new Date().getTime() + offset * 3600 * 1000);
+  
+              const date = String(d).split(" ");
         const newLike = await Like.create({
           user_id: userId,
           message_id: messageId,
@@ -504,7 +506,11 @@ const d = new Date(new Date().getTime() + offset * 3600 * 1000);
         if (oldDisLike) {
           return;
         }
-        const date = Date().split(" ");
+        const destoffset = 3;
+        const offset = destoffset;
+        const d = new Date(new Date().getTime() + offset * 3600 * 1000);
+  
+              const date = String(d).split(" ");
         const newDisLike = await Dislike.create({
           user_id: userId,
           message_id: messageId,
@@ -531,7 +537,11 @@ const d = new Date(new Date().getTime() + offset * 3600 * 1000);
     try {
       const { user_id, body, emojiId, chatId, image, alienId, alienNickName } =
         data;
-      const date = Date().split(" ");
+        const destoffset = 3;
+        const offset = destoffset;
+        const d = new Date(new Date().getTime() + offset * 3600 * 1000);
+  
+              const date = String(d).split(" ");
 
       const messageData = await Message.create({
         user_id,
