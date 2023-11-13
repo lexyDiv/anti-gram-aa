@@ -16,6 +16,10 @@ function TypeAll({
   const str = chat.messages.length
     ? chat.messages[chat.messages.length - 1].body
     : "ещё нет сообщений";
+  const num = checkVieweds({
+    messages: chat.messages,
+    user,
+  });
 
   return (
     <>
@@ -37,13 +41,23 @@ function TypeAll({
               })
             : false}
         </p>
-        <p style={{ fontSize: "13px" }}>{`новых : ${checkVieweds({
-          messages: chat.messages,
-          user,
-        })}`}</p>
+        <div style={{ display: "flex", fontSize: "13px" }}>
+          <p>новых :</p>
+          <p
+            style={{
+              color: `${num ? "aqua" : "white"}`,
+              fontWeight: `${num ? "600" : "100"}`,
+            }}
+          >
+            {num}
+          </p>
+        </div>
       </div>
     </>
   );
 }
-
+//  ${checkVieweds({
+//   messages: chat.messages,
+//   user,
+// })}
 export default TypeAll;

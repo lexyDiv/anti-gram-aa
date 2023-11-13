@@ -165,7 +165,13 @@ io.on("connection", (socket) => {
   socket.on("new:all:chat", async (data) => {
     try {
       const { name, foto, password, userId, nickName } = data;
-      const date = Date().split(" ");
+      const today = new Date();
+      const localoffset = -(today.getTimezoneOffset() / 60);
+      const destoffset = 3;
+      const offset = destoffset - localoffset;
+      const d = new Date(new Date().getTime() + offset * 3600 * 1000);
+
+            const date = String(d).split(" ");
       const chat = await Chat.create({
         type: "all",
         status: password,
@@ -267,7 +273,14 @@ io.on("connection", (socket) => {
   socket.on("add/response", async (data) => {
     try {
       const { userId, body, emojiId, chatId, image, messageId } = data;
-      const date = Date().split(" ");
+
+      const today = new Date();
+const localoffset = -(today.getTimezoneOffset() / 60);
+const destoffset = 3;
+const offset = destoffset - localoffset;
+const d = new Date(new Date().getTime() + offset * 3600 * 1000);
+
+      const date = String(d).split(" ");
       const messageData = await Message.create({
         user_id: userId,
         body,

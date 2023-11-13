@@ -25,6 +25,11 @@ function TypePersonal({
       ? chat.alien.foto
       : images.clearFoto;
 
+      const num = checkVieweds({
+        messages: chat.messages,
+        user,
+      });
+
   return (
     <>
       {chat.alien && (
@@ -54,10 +59,10 @@ function TypePersonal({
                   })
                 : false}
             </p>
-            <p style={{ fontSize: "13px" }}>{`новых : ${checkVieweds({
-              messages: chat.messages,
-              user,
-            })}`}</p>
+            <div style={{display: 'flex', fontSize: "13px"}}>
+          <p >новых :</p>
+          <p style={{ color: `${num ? "aqua" : "white"}`, fontWeight: `${num ? '600' : '100'}` }}>{num}</p>
+        </div>
           </div>
         </>
       )}
