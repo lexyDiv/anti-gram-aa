@@ -167,7 +167,7 @@ io.on("connection", (socket) => {
       const { name, foto, password, userId, nickName } = data;
       const today = new Date();
       const localoffset = -(today.getTimezoneOffset() / 60);
-      const destoffset = 3;
+      const destoffset = 6;
       const offset = destoffset - localoffset;
       const d = new Date(new Date().getTime() + offset * 3600 * 1000);
 
@@ -276,7 +276,7 @@ io.on("connection", (socket) => {
 
       const today = new Date();
 const localoffset = -(today.getTimezoneOffset() / 60);
-const destoffset = 3;
+const destoffset = 6;
 const offset = destoffset - localoffset;
 const d = new Date(new Date().getTime() + offset * 3600 * 1000);
 
