@@ -27,10 +27,10 @@ export function sleepingListener({
        // console.log('data : ', data)
         if (user && data && data.message && data.message !== "ok") {
          // console.log('RELOAD')
-        // window.location.reload();
-        dispatch(changeLoad(false));
-         userSocketJoin({ socket, user });
-         getChatsSocket({ socket, user, dispatch });
+         window.location.reload();
+        // dispatch(changeLoad(false));
+        //  userSocketJoin({ socket, user });
+        //  getChatsSocket({ socket, user, dispatch });
         }
       });
   });
