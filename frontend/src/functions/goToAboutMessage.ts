@@ -22,7 +22,16 @@ export async function goToAboutMessage({
   { messages: Message[]; forvard: number; chatId: number } | undefined
 > {
   const about = chat.messages.find((message) => message.id === aboutMessage.id);
+  const aboutOld = chat.oldMessages.find(
+    (message) => message.id === aboutMessage.id
+  );
   if (about) {
+    stepingScroll({
+      messageBox,
+      scrollFocusMessageId: aboutMessage.id,
+      type: 2,
+    });
+  } else if (aboutOld) {
     stepingScroll({
       messageBox,
       scrollFocusMessageId: aboutMessage.id,

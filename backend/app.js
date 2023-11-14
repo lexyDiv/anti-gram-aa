@@ -165,8 +165,6 @@ io.on("connection", (socket) => {
   socket.on("new:all:chat", async (data) => {
     try {
       const { name, foto, password, userId, nickName } = data;
-      //  const today = new Date();
-      //  const localoffset = -(today.getTimezoneOffset() / 60);
       const destoffset = 3;
       const offset = destoffset;
       const d = new Date(new Date().getTime() + offset * 3600 * 1000);
@@ -481,7 +479,7 @@ io.on("connection", (socket) => {
         const destoffset = 3;
         const offset = destoffset;
         const d = new Date(new Date().getTime() + offset * 3600 * 1000);
-  
+
               const date = String(d).split(" ");
         const newLike = await Like.create({
           user_id: userId,
@@ -509,7 +507,7 @@ io.on("connection", (socket) => {
         const destoffset = 3;
         const offset = destoffset;
         const d = new Date(new Date().getTime() + offset * 3600 * 1000);
-  
+
               const date = String(d).split(" ");
         const newDisLike = await Dislike.create({
           user_id: userId,
@@ -540,7 +538,7 @@ io.on("connection", (socket) => {
         const destoffset = 3;
         const offset = destoffset;
         const d = new Date(new Date().getTime() + offset * 3600 * 1000);
-  
+
               const date = String(d).split(" ");
 
       const messageData = await Message.create({

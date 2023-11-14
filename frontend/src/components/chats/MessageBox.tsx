@@ -16,7 +16,13 @@ import { messageBoxScroll } from "../../functions/messageBoxScroll";
 import { backEndVieweds } from "../../functions/backEndVieweds";
 import MessageMenu from "./messages components/subComponents/MessageMenu";
 import { vieweds } from "../../functions/vieweds";
-import { deleteMessageDefault } from "./slices/chatsSlice";
+import {
+  deleteMessageDefault,
+  get_oldMessages,
+  updateStepsPlan,
+} from "./slices/chatsSlice";
+import { getStepsPlan } from "../../functions/getStepsPlan";
+import { changeLoad } from "./slices/listingSlice";
 
 function MessageBox({
   chat,
@@ -112,6 +118,7 @@ function MessageBox({
     chat.forvard === 1
       ? chat.messages.find((message) => message.id === focusMessage)
       : chat.oldMessages.find((message) => message.id === focusMessage);
+  const { images } = useSelector((state: RootState) => state.listing);
 
   return (
     <>
@@ -156,6 +163,49 @@ function MessageBox({
       ) : (
         <PenItem screen={screen} setWright={setWright} />
       )}
+      {messageBox.current &&
+        chat.stepsPlan[chat.forvard] &&
+        !messageBox.current.scrollTop && (
+          <img
+            id="pull-up"
+            src={images.down}
+            alt="img"
+            onClick={() => {
+              const stepsPlan =
+                !scroll && chat.forvard === 1
+                  ? getStepsPlan({ chat, koof: 0 })
+                  : chat.stepsPlan;
+              !scroll &&
+                chat.forvard === 1 &&
+                dispatch(updateStepsPlan({ chatId: chat.id, stepsPlan }));
+
+              const forvard = chat.forvard;
+              const vector = "up";
+
+              let offset = 0;
+              let limit = 0;
+
+              offset = stepsPlan
+                .slice(forvard + 1)
+                .reduce((acc, el) => acc + el, 0);
+              limit = stepsPlan[forvard];
+
+              dispatch(changeLoad(false));
+              user &&
+                dispatch(
+                  get_oldMessages({
+                    limit,
+                    offset,
+                    chatId: chat.id,
+                    vector,
+                    userId: user.id,
+                    messageBox,
+                    dispatch,
+                  })
+                );
+            }}
+          />
+        )}
       {((messageBox.current &&
         messageBox.current.scrollHeight -
           messageBox.current.scrollTop -

@@ -155,6 +155,11 @@ router.route("/:limit/:offset/:chatId/:userId").get(async (req, res) => {
           },
         });
       }
+      const aboutMessage = message.midi_massage_id
+      && (await Message.findOne({
+        where: { id: message.midi_massage_id },
+        include: { model: User, attributes: ["id", "nickName", "foto"] },
+      }));
       messagesValid.push({
         Dislikes: message.Dislikes,
         Likes: message.Likes,
@@ -173,6 +178,7 @@ router.route("/:limit/:offset/:chatId/:userId").get(async (req, res) => {
         date: message.date,
         user_id: message.user_id,
         seengs,
+        aboutMessage,
       });
     }
     res.json({ message: "ok", messages: messagesValid });
